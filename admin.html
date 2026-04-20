@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>콘텐츠 편집 | 관리자</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="admin-layout">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="sidebar-icon">✏️</span>
+        <div>
+          <div class="sidebar-title">콘텐츠 편집</div>
+          <div class="sidebar-sub">관리자 패널</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#section-logo" class="snav-item active" data-section="section-logo">🖼️ 로고</a>
+        <a href="#section-nav" class="snav-item" data-section="section-nav">🔗 네비게이션</a>
+        <a href="#section-hero" class="snav-item" data-section="section-hero">🏠 히어로</a>
+        <a href="#section-stats" class="snav-item" data-section="section-stats">📊 통계</a>
+        <a href="#section-biz" class="snav-item" data-section="section-biz">🏢 사업부문</a>
+        <a href="#section-sustain" class="snav-item" data-section="section-sustain">🌱 지속가능성</a>
+        <a href="#section-innov" class="snav-item" data-section="section-innov">🔬 연구혁신</a>
+        <a href="#section-news" class="snav-item" data-section="section-news">📰 뉴스</a>
+        <a href="#section-cta" class="snav-item" data-section="section-cta">📣 CTA</a>
+        <a href="#section-footer" class="snav-item" data-section="section-footer">📄 푸터</a>
+      </nav>
+      <div class="sidebar-actions">
+        <button class="btn-save" id="btn-save">💾 저장하기</button>
+        <button class="btn-reset" id="btn-reset">↺ 초기화</button>
+        <a href="index.html" class="btn-preview" target="_blank">👁️ 홈페이지 보기</a>
+      </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="admin-main">
+      <div class="admin-header">
+        <h1>홈페이지 콘텐츠 편집</h1>
+        <p>아래 내용을 수정하고 <strong>저장하기</strong>를 누르면 홈페이지에 바로 반영됩니다.</p>
+      </div>
+
+      <div id="save-toast" class="toast hidden">✅ 저장되었습니다!</div>
+
+      <form id="admin-form">
+
+        <!-- LOGO -->
+        <section class="form-section" id="section-logo">
+          <div class="section-header">
+            <span class="section-icon">🖼️</span>
+            <h2>로고</h2>
+          </div>
+          <div class="form-grid">
+            <div class="form-group full">
+              <label>로고 이미지 업로드</label>
+              <div class="logo-upload-area" id="logo-drop-area">
+                <div class="logo-preview-wrap">
+                  <img id="logo-preview" src="" alt="" style="display:none;max-height:80px;" />
+                  <span id="logo-preview-placeholder">이미지를 드래그하거나 클릭해서 업로드</span>
+                </div>
+                <input type="file" id="logo-file" accept="image/*" style="display:none" />
+                <div class="logo-upload-btns">
+                  <button type="button" class="btn-upload" id="btn-choose-logo">파일 선택</button>
+                  <button type="button" class="btn-remove-logo" id="btn-remove-logo">로고 제거</button>
+                </div>
+              </div>
+              <span class="field-hint">PNG, JPG, SVG 권장. 로고가 없으면 텍스트 로고가 표시됩니다.</span>
+            </div>
+            <div class="form-group">
+              <label for="f-logoText">텍스트 로고 (이미지 없을 때)</label>
+              <input type="text" id="f-logoText" name="logoText" />
+            </div>
+          </div>
+        </section>
+
+        <!-- NAV -->
+        <section class="form-section" id="section-nav">
+          <div class="section-header"><span class="section-icon">🔗</span><h2>네비게이션</h2></div>
+          <div class="form-group"><label>상단 태그라인</label><input type="text" id="f-headerTagline" name="headerTagline" /></div>
+          <div class="form-grid">
+            <div class="form-group"><label>메뉴 1</label><input type="text" id="f-nav1" name="nav1" /></div>
+            <div class="form-group"><label>메뉴 2</label><input type="text" id="f-nav2" name="nav2" /></div>
+            <div class="form-group"><label>메뉴 3</label><input type="text" id="f-nav3" name="nav3" /></div>
+            <div class="form-group"><label>메뉴 4</label><input type="text" id="f-nav4" name="nav4" /></div>
+            <div class="form-group"><label>메뉴 5</label><input type="text" id="f-nav5" name="nav5" /></div>
+            <div class="form-group"><label>메뉴 6</label><input type="text" id="f-nav6" name="nav6" /></div>
+          </div>
+        </section>
+
+        <!-- HERO -->
+        <section class="form-section" id="section-hero">
+          <div class="section-header"><span class="section-icon">🏠</span><h2>히어로 섹션</h2></div>
+          <div class="form-group"><label>작은 제목 (Eyebrow)</label><input type="text" id="f-heroEyebrow" name="heroEyebrow" /></div>
+          <div class="form-group"><label>메인 타이틀</label><textarea id="f-heroTitle" name="heroTitle" rows="2"></textarea></div>
+          <div class="form-group"><label>설명문</label><textarea id="f-heroDesc" name="heroDesc" rows="2"></textarea></div>
+          <div class="form-group"><label>버튼 텍스트</label><input type="text" id="f-heroCta" name="heroCta" /></div>
+        </section>
+
+        <!-- STATS -->
+        <section class="form-section" id="section-stats">
+          <div class="section-header"><span class="section-icon">📊</span><h2>통계 수치</h2></div>
+          <div class="form-grid">
+            <div class="form-group"><label>수치 1</label><input type="text" id="f-stat1Num" name="stat1Num" /></div>
+            <div class="form-group"><label>라벨 1</label><input type="text" id="f-stat1Label" name="stat1Label" /></div>
+            <div class="form-group"><label>수치 2</label><input type="text" id="f-stat2Num" name="stat2Num" /></div>
+            <div class="form-group"><label>라벨 2</label><input type="text" id="f-stat2Label" name="stat2Label" /></div>
+            <div class="form-group"><label>수치 3</label><input type="text" id="f-stat3Num" name="stat3Num" /></div>
+            <div class="form-group"><label>라벨 3</label><input type="text" id="f-stat3Label" name="stat3Label" /></div>
+            <div class="form-group"><label>수치 4</label><input type="text" id="f-stat4Num" name="stat4Num" /></div>
+            <div class="form-group"><label>라벨 4</label><input type="text" id="f-stat4Label" name="stat4Label" /></div>
+          </div>
+        </section>
+
+        <!-- BUSINESS -->
+        <section class="form-section" id="section-biz">
+          <div class="section-header"><span class="section-icon">🏢</span><h2>사업 부문</h2></div>
+          <div class="form-group"><label>섹션 제목</label><input type="text" id="f-bizTitle" name="bizTitle" /></div>
+          <div class="form-group"><label>섹션 부제목</label><input type="text" id="f-bizSub" name="bizSub" /></div>
+          <div class="biz-cards-grid">
+            <div class="biz-edit-card">
+              <div class="biz-card-label">사업부문 1</div>
+              <div class="form-group"><label>이름</label><input type="text" id="f-biz1Name" name="biz1Name" /></div>
+              <div class="form-group"><label>설명</label><textarea id="f-biz1Desc" name="biz1Desc" rows="3"></textarea></div>
+            </div>
+            <div class="biz-edit-card">
+              <div class="biz-card-label">사업부문 2</div>
+              <div class="form-group"><label>이름</label><input type="text" id="f-biz2Name" name="biz2Name" /></div>
+              <div class="form-group"><label>설명</label><textarea id="f-biz2Desc" name="biz2Desc" rows="3"></textarea></div>
+            </div>
+            <div class="biz-edit-card">
+              <div class="biz-card-label">사업부문 3</div>
+              <div class="form-group"><label>이름</label><input type="text" id="f-biz3Name" name="biz3Name" /></div>
+              <div class="form-group"><label>설명</label><textarea id="f-biz3Desc" name="biz3Desc" rows="3"></textarea></div>
+            </div>
+            <div class="biz-edit-card">
+              <div class="biz-card-label">사업부문 4</div>
+              <div class="form-group"><label>이름</label><input type="text" id="f-biz4Name" name="biz4Name" /></div>
+              <div class="form-group"><label>설명</label><textarea id="f-biz4Desc" name="biz4Desc" rows="3"></textarea></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SUSTAINABILITY -->
+        <section class="form-section" id="section-sustain">
+          <div class="section-header"><span class="section-icon">🌱</span><h2>지속가능성</h2></div>
+          <div class="form-group"><label>소제목</label><input type="text" id="f-sustainEyebrow" name="sustainEyebrow" /></div>
+          <div class="form-group"><label>메인 타이틀</label><textarea id="f-sustainTitle" name="sustainTitle" rows="2"></textarea></div>
+          <div class="form-group"><label>설명문</label><textarea id="f-sustainDesc" name="sustainDesc" rows="3"></textarea></div>
+          <div class="form-group"><label>버튼 텍스트</label><input type="text" id="f-sustainCta" name="sustainCta" /></div>
+          <h3 class="sub-section-title">배지 항목</h3>
+          <div class="form-grid">
+            <div class="form-group"><label>배지 1 제목</label><input type="text" id="f-sustainBadge1Title" name="sustainBadge1Title" /></div>
+            <div class="form-group"><label>배지 1 설명</label><input type="text" id="f-sustainBadge1Desc" name="sustainBadge1Desc" /></div>
+            <div class="form-group"><label>배지 2 제목</label><input type="text" id="f-sustainBadge2Title" name="sustainBadge2Title" /></div>
+            <div class="form-group"><label>배지 2 설명</label><input type="text" id="f-sustainBadge2Desc" name="sustainBadge2Desc" /></div>
+            <div class="form-group"><label>배지 3 제목</label><input type="text" id="f-sustainBadge3Title" name="sustainBadge3Title" /></div>
+            <div class="form-group"><label>배지 3 설명</label><input type="text" id="f-sustainBadge3Desc" name="sustainBadge3Desc" /></div>
+          </div>
+        </section>
+
+        <!-- INNOVATION -->
+        <section class="form-section" id="section-innov">
+          <div class="section-header"><span class="section-icon">🔬</span><h2>연구 & 혁신</h2></div>
+          <div class="form-group"><label>소제목</label><input type="text" id="f-innovEyebrow" name="innovEyebrow" /></div>
+          <div class="form-group"><label>메인 타이틀</label><input type="text" id="f-innovTitle" name="innovTitle" /></div>
+          <div class="form-group"><label>설명문</label><textarea id="f-innovDesc" name="innovDesc" rows="3"></textarea></div>
+          <div class="form-group"><label>버튼 텍스트</label><input type="text" id="f-innovCta" name="innovCta" /></div>
+        </section>
+
+        <!-- NEWS -->
+        <section class="form-section" id="section-news">
+          <div class="section-header"><span class="section-icon">📰</span><h2>뉴스</h2></div>
+          <div class="form-group"><label>섹션 제목</label><input type="text" id="f-newsTitle" name="newsTitle" /></div>
+          <div class="news-cards-grid">
+            <div class="news-edit-card">
+              <div class="news-card-label">뉴스 1</div>
+              <div class="form-group"><label>태그</label><input type="text" id="f-news1Tag" name="news1Tag" /></div>
+              <div class="form-group"><label>제목</label><input type="text" id="f-news1Headline" name="news1Headline" /></div>
+              <div class="form-group"><label>내용</label><textarea id="f-news1Excerpt" name="news1Excerpt" rows="3"></textarea></div>
+              <div class="form-group"><label>날짜</label><input type="text" id="f-news1Date" name="news1Date" /></div>
+            </div>
+            <div class="news-edit-card">
+              <div class="news-card-label">뉴스 2</div>
+              <div class="form-group"><label>태그</label><input type="text" id="f-news2Tag" name="news2Tag" /></div>
+              <div class="form-group"><label>제목</label><input type="text" id="f-news2Headline" name="news2Headline" /></div>
+              <div class="form-group"><label>내용</label><textarea id="f-news2Excerpt" name="news2Excerpt" rows="3"></textarea></div>
+              <div class="form-group"><label>날짜</label><input type="text" id="f-news2Date" name="news2Date" /></div>
+            </div>
+            <div class="news-edit-card">
+              <div class="news-card-label">뉴스 3</div>
+              <div class="form-group"><label>태그</label><input type="text" id="f-news3Tag" name="news3Tag" /></div>
+              <div class="form-group"><label>제목</label><input type="text" id="f-news3Headline" name="news3Headline" /></div>
+              <div class="form-group"><label>내용</label><textarea id="f-news3Excerpt" name="news3Excerpt" rows="3"></textarea></div>
+              <div class="form-group"><label>날짜</label><input type="text" id="f-news3Date" name="news3Date" /></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="form-section" id="section-cta">
+          <div class="section-header"><span class="section-icon">📣</span><h2>CTA 배너</h2></div>
+          <div class="form-grid">
+            <div class="form-group"><label>CTA 1 제목</label><input type="text" id="f-cta1Title" name="cta1Title" /></div>
+            <div class="form-group"><label>CTA 1 설명</label><input type="text" id="f-cta1Desc" name="cta1Desc" /></div>
+            <div class="form-group"><label>CTA 1 버튼</label><input type="text" id="f-cta1Btn" name="cta1Btn" /></div>
+            <div class="form-group"><label>CTA 2 제목</label><input type="text" id="f-cta2Title" name="cta2Title" /></div>
+            <div class="form-group"><label>CTA 2 설명</label><input type="text" id="f-cta2Desc" name="cta2Desc" /></div>
+            <div class="form-group"><label>CTA 2 버튼</label><input type="text" id="f-cta2Btn" name="cta2Btn" /></div>
+          </div>
+        </section>
+
+        <!-- FOOTER -->
+        <section class="form-section" id="section-footer">
+          <div class="section-header"><span class="section-icon">📄</span><h2>푸터</h2></div>
+          <div class="form-group"><label>로고 텍스트</label><input type="text" id="f-footerLogoText" name="footerLogoText" /></div>
+          <div class="form-group"><label>슬로건</label><input type="text" id="f-footerSlogan" name="footerSlogan" /></div>
+          <div class="form-group"><label>저작권 문구</label><input type="text" id="f-footerCopy" name="footerCopy" /></div>
+        </section>
+
+      </form><!-- /admin-form -->
+
+      <div class="bottom-actions">
+        <button class="btn-save large" id="btn-save-bottom">💾 저장하기</button>
+        <button class="btn-reset" id="btn-reset-bottom">↺ 초기화</button>
+        <a href="index.html" class="btn-preview large" target="_blank">👁️ 홈페이지 보기</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="site-data.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
